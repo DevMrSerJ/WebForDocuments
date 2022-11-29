@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AllDocumentsPageComponent } from './all-documents-page/all-documents-page.component';
 import { DocumentPageComponent } from './document-page/document-page.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
   { path: '', component: AllDocumentsPageComponent },
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
