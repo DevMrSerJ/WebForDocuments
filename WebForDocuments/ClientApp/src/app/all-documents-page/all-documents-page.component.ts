@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./all-documents-page.component.scss']
 })
 export class AllDocumentsPageComponent {
-
+    helloWorld() {
+      alert('Hello world!');
+    }
 }

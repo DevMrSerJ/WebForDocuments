@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { DxButtonModule } from 'devextreme-angular';
+
 import { AppComponent } from './app.component';
 import { AllDocumentsPageComponent } from './all-documents-page/all-documents-page.component';
 import { DocumentInfoPageComponent } from './document-info-page/document-info-page.component';
@@ -25,6 +27,7 @@ const appRoutes: Routes = [
     BrowserModule,
     NgbAlertModule,
     RouterModule.forRoot(appRoutes),
+    DxButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
