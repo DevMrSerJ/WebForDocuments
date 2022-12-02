@@ -2,7 +2,13 @@
   <dx-data-grid id="gridContainer"
                 [dataSource]="documents"
                 keyExpr="DocumentID"
-                [showBorders]="true">
+                [showBorders]="true"
+                [columns]="columns"
+                [focusedRowEnabled]="true"
+                [(focusedRowKey)]="focusedRowKey"
+                [(autoNavigateToFocusedRow)]="autoNavigateToFocusedRow"
+                (onFocusedRowChanging)="onFocusedRowChanging($event)"
+                (onFocusedRowChanged)="onFocusedRowChanged($event)">
     <dxo-filter-row [visible]="showFilterRow"
                     [applyFilter]="currentFilter"></dxo-filter-row>
     <dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
@@ -23,21 +29,5 @@
     <dxi-column dataField="Position" [width]="140" caption="Position тгьиук">
       <dxo-header-filter [groupInterval]="10000"></dxo-header-filter>
     </dxi-column>
-
-    <!--<dxi-column dataField="DocumentID"
-              dataType="number">
-    <dxo-header-filter [groupInterval]="100">
-    </dxo-header-filter>
-  </dxi-column>
-  <dxi-column dataField="FullName"
-              dataType="String">
-    <dxo-header-filter [groupInterval]="100">
-    </dxo-header-filter>
-  </dxi-column>
-  <dxi-column dataField="Position"
-              dataType="String">
-    <dxo-header-filter [groupInterval]="100">
-    </dxo-header-filter>
-  </dxi-column>-->
   </dx-data-grid>
 </div>
