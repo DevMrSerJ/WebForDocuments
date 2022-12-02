@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Document,  DocumentService } from '../document.service';
 
 @Component({
   selector: 'app-all-documents-page',
@@ -6,7 +7,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./all-documents-page.component.scss']
 })
 export class AllDocumentsPageComponent {
-    helloWorld() {
-      alert('Hello world!');
-    }
+  documents: Document[] = [];
+
+  applyFilterTypes: any;
+
+  currentFilter: any;
+
+  showFilterRow: boolean;
+
+  showHeaderFilter: boolean;
+
+  constructor(service: DocumentService) {
+    this.documents = service.getDocuments();
+    this.showFilterRow = true;
+    this.showHeaderFilter = true;
+
+    this.applyFilterTypes = [{
+      key: 'auto',
+      name: 'Immediately',
+    }, {
+      key: 'onClick',
+      name: 'On Button Click',
+    }];
+    this.currentFilter = this.applyFilterTypes[0].key;
+  }
 }

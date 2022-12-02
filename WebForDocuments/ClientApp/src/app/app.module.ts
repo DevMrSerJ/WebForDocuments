@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { DxButtonModule } from 'devextreme-angular';
+import { DxDataGridModule } from 'devextreme-angular';
 
 import { AppComponent } from './app.component';
 import { AllDocumentsPageComponent } from './all-documents-page/all-documents-page.component';
 import { DocumentInfoPageComponent } from './document-info-page/document-info-page.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+
+import { DocumentService } from './document.service';
 
 const appRoutes: Routes = [
   { path: '', component: AllDocumentsPageComponent },
@@ -27,9 +29,9 @@ const appRoutes: Routes = [
     BrowserModule,
     NgbAlertModule,
     RouterModule.forRoot(appRoutes),
-    DxButtonModule
+    DxDataGridModule
   ],
-  providers: [],
+  providers: [DocumentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

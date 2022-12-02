@@ -1,4 +1,43 @@
 <div class="container">
-  <dx-button text="Click me" (onClick)="helloWorld()">
-  </dx-button>
+  <dx-data-grid id="gridContainer"
+                [dataSource]="documents"
+                keyExpr="DocumentID"
+                [showBorders]="true">
+    <dxo-filter-row [visible]="showFilterRow"
+                    [applyFilter]="currentFilter"></dxo-filter-row>
+    <dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
+    <dxi-column dataField="DocumentID" [width]="140" caption="Document ID">
+      <dxo-header-filter [groupInterval]="10000"></dxo-header-filter>
+    </dxi-column>
+
+    <dxo-filter-row [visible]="showFilterRow"
+                    [applyFilter]="currentFilter"></dxo-filter-row>
+    <dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
+    <dxi-column dataField="FullName" [width]="140" caption="Full Name">
+      <dxo-header-filter [groupInterval]="10000"></dxo-header-filter>
+    </dxi-column>
+
+    <dxo-filter-row [visible]="showFilterRow"
+                    [applyFilter]="currentFilter"></dxo-filter-row>
+    <dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
+    <dxi-column dataField="Position" [width]="140" caption="Position тгьиук">
+      <dxo-header-filter [groupInterval]="10000"></dxo-header-filter>
+    </dxi-column>
+
+    <!--<dxi-column dataField="DocumentID"
+              dataType="number">
+    <dxo-header-filter [groupInterval]="100">
+    </dxo-header-filter>
+  </dxi-column>
+  <dxi-column dataField="FullName"
+              dataType="String">
+    <dxo-header-filter [groupInterval]="100">
+    </dxo-header-filter>
+  </dxi-column>
+  <dxi-column dataField="Position"
+              dataType="String">
+    <dxo-header-filter [groupInterval]="100">
+    </dxo-header-filter>
+  </dxi-column>-->
+  </dx-data-grid>
 </div>
