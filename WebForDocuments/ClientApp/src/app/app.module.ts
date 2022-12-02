@@ -14,7 +14,7 @@ import { DocumentService } from './document.service';
 
 const appRoutes: Routes = [
   { path: '', component: AllDocumentsPageComponent },
-  { path: 'documents', component: DocumentInfoPageComponent },
+  { path: 'document', component: DocumentInfoPageComponent },
   { path: '**', component: ErrorPageComponent }
 ];
 

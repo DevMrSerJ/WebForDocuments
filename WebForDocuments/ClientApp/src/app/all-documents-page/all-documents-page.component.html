@@ -1,32 +1,53 @@
 <div class="container">
   <dx-data-grid id="gridContainer"
                 [dataSource]="documents"
-                keyExpr="DocumentID"
+                keyExpr="id_pos"
                 [showBorders]="true"
                 [columns]="columns"
                 [focusedRowEnabled]="true"
                 [(focusedRowKey)]="focusedRowKey"
                 [(autoNavigateToFocusedRow)]="autoNavigateToFocusedRow"
                 (onFocusedRowChanging)="onFocusedRowChanging($event)"
-                (onFocusedRowChanged)="onFocusedRowChanged($event)">
+                (onCellDblClick)="onCellDblClick($event)">
     <dxo-filter-row [visible]="showFilterRow"
                     [applyFilter]="currentFilter"></dxo-filter-row>
     <dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
-    <dxi-column dataField="DocumentID" [width]="140" caption="Document ID">
+    <dxi-column dataField="id_pos" [width]="140" caption="Position ID">
       <dxo-header-filter [groupInterval]="10000"></dxo-header-filter>
     </dxi-column>
 
     <dxo-filter-row [visible]="showFilterRow"
                     [applyFilter]="currentFilter"></dxo-filter-row>
     <dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
-    <dxi-column dataField="FullName" [width]="140" caption="Full Name">
+    <dxi-column dataField="id_record" [width]="140" caption="Record ID">
       <dxo-header-filter [groupInterval]="10000"></dxo-header-filter>
     </dxi-column>
 
     <dxo-filter-row [visible]="showFilterRow"
                     [applyFilter]="currentFilter"></dxo-filter-row>
     <dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
-    <dxi-column dataField="Position" [width]="140" caption="Position тгьиук">
+    <dxi-column dataField="id_hd_route" [width]="140" caption="Route hd ID">
+      <dxo-header-filter [groupInterval]="10000"></dxo-header-filter>
+    </dxi-column>
+
+    <dxo-filter-row [visible]="showFilterRow"
+                    [applyFilter]="currentFilter"></dxo-filter-row>
+    <dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
+    <dxi-column dataField="nom_route" [width]="140" caption="Nom Route">
+      <dxo-header-filter [groupInterval]="10000"></dxo-header-filter>
+    </dxi-column>
+
+    <dxo-filter-row [visible]="showFilterRow"
+                    [applyFilter]="currentFilter"></dxo-filter-row>
+    <dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
+    <dxi-column dataField="nom_zak" [width]="140" caption="Nom Zak">
+      <dxo-header-filter [groupInterval]="10000"></dxo-header-filter>
+    </dxi-column>
+
+    <dxo-filter-row [visible]="showFilterRow"
+                    [applyFilter]="currentFilter"></dxo-filter-row>
+    <dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
+    <dxi-column dataField="nom_nakl" [width]="140" caption="Nom Nakl">
       <dxo-header-filter [groupInterval]="10000"></dxo-header-filter>
     </dxi-column>
   </dx-data-grid>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SafeHtml } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { Document,  DocumentService } from '../document.service';
 
 @Component({
@@ -22,22 +22,11 @@ export class AllDocumentsPageComponent {
 
   dataSource: any;
 
-  isReady: boolean | undefined;
-
-  taskSubject: string | undefined;
-
-  taskDetailsHtml: SafeHtml | undefined;
-
-  taskStatus: string | undefined;
-
-  taskProgress: string | undefined;
-
   focusedRowKey = 117;
 
   autoNavigateToFocusedRow = true;
-    sanitizer: any;
 
-  constructor(service: DocumentService) {
+  constructor(private router: Router, service: DocumentService) {
     this.documents = service.getDocuments();
     this.showFilterRow = true;
     this.showHeaderFilter = true;
@@ -71,14 +60,12 @@ export class AllDocumentsPageComponent {
     }
   }
 
-  onFocusedRowChanged(e: any) {
-    const rowData = e.row && e.row.data;
-
-    if (rowData) {
-      this.taskSubject = rowData.Task_Subject;
-      this.taskDetailsHtml = this.sanitizer.bypassSecurityTrustHtml(rowData.Task_Description);
-      this.taskStatus = rowData.Task_Status;
-      this.taskProgress = rowData.Task_Completion ? `${rowData.Task_Completion}` + '%' : '';
-    }
+  onCellDblClick(e: any) {
+    console.log(e);
+    this.router.navigateByUrl('/document', {
+      state: {
+        id: e.row.data.id_record
+      }
+    });
   }
 }
