@@ -1,4 +1,4 @@
-export interface Document {
+export interface DocumentModel {
   id_pos: Number,
   id_record: Number,
   id_hd_route?: Number,
@@ -7,7 +7,7 @@ export interface Document {
   nom_nakl?: String
 }
 
-const documents: Document[] = [
+const documents: DocumentModel[] = [
   {
     "id_pos": 1,
     "id_record": 115725022,
@@ -55,7 +55,7 @@ const documents: Document[] = [
 ];
 
 export class DocumentService {
-  getDocuments(): Document[] {
+  getDocuments(): DocumentModel[] {
     return documents;
   }
 }

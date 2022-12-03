@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Document,  DocumentService } from '../document.service';
+import { DocumentModel,  DocumentService } from '../document.service';
 
 @Component({
   selector: 'app-all-documents-page',
@@ -8,7 +8,7 @@ import { Document,  DocumentService } from '../document.service';
   styleUrls: ['./all-documents-page.component.scss']
 })
 export class AllDocumentsPageComponent {
-  documents: Document[] = [];
+  documents: DocumentModel[] = [];
 
   applyFilterTypes: any;
 

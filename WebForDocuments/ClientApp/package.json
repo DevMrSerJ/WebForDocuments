@@ -25,6 +25,7 @@
     "devexpress-reporting-angular": "^22.1.6",
     "devextreme": "22.1.6",
     "devextreme-angular": "22.1.6",
+    "devextreme-aspnet-data": "^2.9.0",
     "devextreme-schematics": "^1.4.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

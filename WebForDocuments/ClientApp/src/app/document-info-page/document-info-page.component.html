@@ -1,1 +1,18 @@
-<p>{{ recordId }}</p>
+<div class="container">
+  <div class="row">
+    <div *ngFor="let status of statuses" class="col-sm">
+      <dx-data-grid [dataSource]="products[status]"
+                    [height]="440"
+                    [showBorders]="true">
+        <dxo-row-dragging [data]="status"
+                          group="tasksGroup"
+                          [onAdd]="onAdd"></dxo-row-dragging>
+        <dxo-scrolling mode="virtual"></dxo-scrolling>
+
+        <dxi-column dataField="id_inst" dataType="number"></dxi-column>
+        <dxi-column dataField="pos_name" dataType="string" [width]="80"></dxi-column>
+        <dxi-column dataField="pos_group_id" dataType="string"></dxi-column>
+      </dx-data-grid>
+    </div>
+  </div>
+</div>
