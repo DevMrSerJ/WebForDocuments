@@ -28,11 +28,11 @@ namespace WebForDocuments.Controllers
 		{
 			try
 			{
-				var result = new Answer();
+				var documentList = new DocumentList();
 
-				var url = _configuration.GetSection("DocumentsApiConfig").GetValue<string>("UrlForAPI");
+				var url = _configuration.GetSection("DocumentsApiConfig").GetSection("UrlForAPI").GetValue<string>("GetDocuments");
 				var login = _configuration.GetSection("DocumentsApiConfig").GetValue<string>("Login");
-				var password = _configuration.GetSection("DocumentsApiConfig").GetValue<string>("Login");
+				var password = _configuration.GetSection("DocumentsApiConfig").GetValue<string>("Password");
 
 				var request = WebRequest.Create(url);
 				request.Credentials = new NetworkCredential(login, password);
@@ -45,11 +45,18 @@ namespace WebForDocuments.Controllers
 					{
 						var responseText = reader.ReadToEnd();
 
-						result = JsonConvert.DeserializeObject<Answer>(responseText);
+						documentList = JsonConvert.DeserializeObject<DocumentList>(responseText);
 					}
 				}
 
-				return result;
+				return new
+				{
+					exception = new {
+						error = 0,
+						errorMessage = ""
+					},
+					documentList.Documents
+				};
 			}
 			catch (Exception ex)
 			{
@@ -57,6 +64,52 @@ namespace WebForDocuments.Controllers
 					error = 500,
 					errorMessage = ex.Message
 				}; 
+			}
+		}
+
+		[HttpGet("{Id}")]
+		public object Get([FromRoute(Name = "Id")] long id)
+		{
+			try
+			{
+				var productList = new ProductList();
+
+				var url = _configuration.GetSection("DocumentsApiConfig").GetSection("UrlForAPI").GetValue<string>("GetProducts");
+				var login = _configuration.GetSection("DocumentsApiConfig").GetValue<string>("Login");
+				var password = _configuration.GetSection("DocumentsApiConfig").GetValue<string>("Password");
+
+				var request = WebRequest.Create(url + id);
+				request.Credentials = new NetworkCredential(login, password);
+
+				using (var response = request.GetResponse() as HttpWebResponse)
+				{
+					var responseStream = response.GetResponseStream();
+
+					using (var reader = new StreamReader(responseStream))
+					{
+						var responseText = reader.ReadToEnd();
+
+						productList = JsonConvert.DeserializeObject<ProductList>(responseText);
+					}
+				}
+
+				return new
+				{
+					exception = new
+					{
+						error = 0,
+						errorMessage = ""
+					},
+					productList.Products.ProductInfoList
+				};
+			}
+			catch (Exception ex)
+			{
+				return new
+				{
+					error = 500,
+					errorMessage = ex.Message
+				};
 			}
 		}
 	}

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace WebForDocuments.Models
 {
-	public class Answer
+	public class ProductList
 	{
 		[JsonProperty("exception")]
 		public ExceptionModel Error { get; set; }
 
 		[JsonProperty("data")]
-		public IEnumerable<DocumentModel> Documents { get; set; }
+		public ProductTableList Products { get; set; }
 
 		[JsonProperty("outparams")]
 		public object Outparams { get; set; }

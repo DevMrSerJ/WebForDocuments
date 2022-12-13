@@ -9,13 +9,13 @@ namespace WebForDocuments.Models
 	public class DocumentModel
 	{
 		[JsonProperty("id_pos")]
-		public long PositionId { get; set; }
+		public long? PositionId { get; set; }
 
 		[JsonProperty("id_record")]
-		public long RecordId { get; set; }
+		public long? RecordId { get; set; }
 
 		[JsonProperty("id_hd_route")]
-		public long RouteHdId { get; set; }
+		public long? RouteHdId { get; set; }
 
 		[JsonProperty("nom_route")]
 		public string NumberRoute { get; set; }
