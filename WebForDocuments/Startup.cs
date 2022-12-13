@@ -12,6 +12,8 @@ namespace WebForDocuments
 	{
 		public Startup(IConfiguration configuration)
 		{
+			var builder = new ConfigurationBuilder();
+			configuration = builder.Build();
 			Configuration = configuration;
 		}
 
@@ -21,6 +23,7 @@ namespace WebForDocuments
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllersWithViews();
+
 			// In production, the Angular files will be served from this directory
 			services.AddSpaStaticFiles(configuration =>
 			{
