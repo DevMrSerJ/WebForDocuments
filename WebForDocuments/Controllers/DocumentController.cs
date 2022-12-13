@@ -2,27 +2,37 @@
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
 using WebForDocuments.Models;
 
 namespace WebForDocuments.Controllers
 {
+	/// <summary>
+	/// Контроллер для работы с документами.
+	/// </summary>
 	[ApiController]
 	[Route("api/[controller]")]
 	public class DocumentController : ControllerBase
 	{
+		/// <summary>
+		/// Конфигуратор для работы с appSettings.
+		/// </summary>
 		private readonly IConfiguration _configuration;
 
+		/// <summary>
+		/// Конструктор.
+		/// </summary>
+		/// <param name="configuration">Конфигуратор.</param>
 		public DocumentController(IConfiguration configuration)
 		{
 			_configuration = configuration;
 		}
 
+		/// <summary>
+		/// Получение всех документов.
+		/// </summary>
+		/// <returns>Объект со всеми документами.</returns>
 		[HttpGet]
 		public object Get()
 		{
@@ -67,6 +77,11 @@ namespace WebForDocuments.Controllers
 			}
 		}
 
+		/// <summary>
+		/// Получение продуктов у конкретного документа.
+		/// </summary>
+		/// <param name="id">id_record документа.</param>
+		/// <returns>Объект со всеми его продуктами.</returns>
 		[HttpGet("{Id}")]
 		public object Get([FromRoute(Name = "Id")] long id)
 		{
