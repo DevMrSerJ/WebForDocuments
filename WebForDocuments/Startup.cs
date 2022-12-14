@@ -10,6 +10,8 @@ namespace WebForDocuments
 {
 	public class Startup
 	{
+		private static readonly string corsPolicy = "corsPolicyLocalhost";
+
 		public Startup(IConfiguration configuration)
 		{
 			var builder = new ConfigurationBuilder();
@@ -22,6 +24,19 @@ namespace WebForDocuments
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddCors(options =>
+			{
+				options.AddPolicy(name: corsPolicy,
+								  builder =>
+								  {
+									  builder
+										.WithOrigins("http://localhost:4200",
+													 "http://localhost:44300")
+										.AllowAnyHeader()
+										.AllowAnyMethod();
+								  });
+			});
+
 			services.AddControllersWithViews();
 
 			// In production, the Angular files will be served from this directory
@@ -34,6 +49,8 @@ namespace WebForDocuments
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
+			app.UseCors(corsPolicy);
+
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
