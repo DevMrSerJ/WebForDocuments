@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  /**
+   * Константы для работы с api получения прогноза погоды.
+   */
+  apiDocuments: {
+    /**
+     * Api получения погоды.
+     */
+    url: "https://localhost:44363/api/document/"
+  },
 };
 
 /*
