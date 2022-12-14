@@ -9,12 +9,26 @@ import { ProductModel } from '../product-document.service';
   styleUrls: ['./document-info-page.component.scss']
 })
 export class DocumentInfoPageComponent {
+  /**
+   * Номер таблицы.
+   */
   statuses: Array<number>;
 
+  /**
+   * Сами продукты всех таблиц.
+   */
   products: Array<Array<ProductModel>>;
 
+  /**
+   * Ресурсы данных для таблицы.
+   */
   dataSource: any;
 
+  /**
+   * Конструктор.
+   * @param router роутер для навигации.
+   * @param httpService http-клиент для отправки запросов.
+   */
   constructor(private router: Router, private httpService: HttpService) {
     this.statuses = [0, 1];
     this.products = [[], []];
@@ -32,6 +46,10 @@ export class DocumentInfoPageComponent {
     this.onAdd = this.onAdd.bind(this);
   }
 
+  /**
+   * Установить продукты с сервера.
+   * @param recordId Id документа.
+   */
   setProducts(recordId: any) {
     this.httpService.getProducts(recordId).subscribe(
       (data: any) => {
@@ -70,6 +88,10 @@ export class DocumentInfoPageComponent {
       });
   }
 
+  /**
+   * Обработчик добавления элемента в таблицу.
+   * @param e Событие.
+   */
   onAdd(e: any) {
     this.products[e.toData].splice(e.toIndex, 0, e.itemData);
     this.products[e.fromData].splice(e.fromIndex, 1);

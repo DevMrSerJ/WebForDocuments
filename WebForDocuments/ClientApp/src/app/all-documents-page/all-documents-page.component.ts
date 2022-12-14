@@ -11,26 +11,58 @@ import { HttpService } from '../http.service';
   providers: [HttpService]
 })
 export class AllDocumentsPageComponent {
+  /**
+   * Документы.
+   */
   documents: DocumentModel[] = [];
 
+  /**
+   * Типы фильтров.
+   */
   applyFilterTypes: any;
 
+  /**
+   * Текущий фильтр.
+   */
   currentFilter: any;
 
+  /**
+   * Показывать ли фильтр.
+   */
   showFilterRow: boolean;
 
+  /**
+   * Показывать ли строку с сортировкой.
+   */
   showHeaderFilter: boolean;
 
+  /**
+   * Колонки.
+   */
   columns: any;
 
+  /**
+   * Данные для таблицы.
+   */
   dataSource: any;
 
+  /**
+   * Ключ фокуса строки.
+   */
   focusedRowKey = 117;
 
+  /**
+   * Автоматический переход к фокусировке строки.
+   */
   autoNavigateToFocusedRow = true;
 
+  /**
+   * Конструктор.
+   * @param router роутер для навигации.
+   * @param httpService http-клиент для отправки запросов.
+   */
   constructor(private router: Router, private httpService: HttpService) {
-    this.getDocuments();
+    this.setDocuments();
     this.showFilterRow = true;
     this.showHeaderFilter = true;
 
@@ -44,7 +76,10 @@ export class AllDocumentsPageComponent {
     this.currentFilter = this.applyFilterTypes[0].key;
   }
 
-  getDocuments(): void {
+  /**
+   * Устанавливает все документы, полученные с сервера.
+   */
+  setDocuments(): void {
     this.httpService.getDocuments().subscribe(
       (data: any) => {
         if (data.exception.error !== 0) {
@@ -70,6 +105,10 @@ export class AllDocumentsPageComponent {
       });
   }
 
+  /**
+   * Обработка изменения фокуса мыши.
+   * @param e событие.
+   */
   onFocusedRowChanging(e: any) {
     const rowsCount = e.component.getVisibleRows().length;
     const pageCount = e.component.pageCount();
@@ -89,6 +128,10 @@ export class AllDocumentsPageComponent {
     }
   }
 
+  /**
+   * Обработка двойного нажатия мыши на ячейку.
+   * @param e событие.
+   */
   onCellDblClick(e: any) {
     localStorage.setItem('documentId', JSON.stringify(e.row.data.id_record));
 

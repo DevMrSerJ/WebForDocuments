@@ -1,3 +1,6 @@
+/**
+* Модель продукта.
+*/
 export interface ProductModel {
   id_inst: Number,
   id_pos: Number,

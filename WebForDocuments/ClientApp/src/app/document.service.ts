@@ -1,3 +1,6 @@
+/**
+* Модель документа.
+*/
 export interface DocumentModel {
   id_pos: Number,
   id_record: Number,

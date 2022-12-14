@@ -6,11 +6,11 @@ export const environment = {
   production: false,
 
   /**
-   * Константы для работы с api получения прогноза погоды.
+   * Константы для работы с api.
    */
   apiDocuments: {
     /**
-     * Api получения погоды.
+     * Адрес для запросов.
      */
     url: "https://localhost:44363/api/document/"
   },
