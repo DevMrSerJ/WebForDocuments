@@ -11,8 +11,6 @@ import { AllDocumentsPageComponent } from './all-documents-page/all-documents-pa
 import { DocumentInfoPageComponent } from './document-info-page/document-info-page.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 
-import { DocumentService } from './document.service';
-import { ProductDocumentService } from './product-document.service';
 import { HttpService } from './http.service';
 
 const appRoutes: Routes = [
@@ -35,7 +33,7 @@ const appRoutes: Routes = [
     DxDataGridModule,
     HttpClientModule
   ],
-  providers: [DocumentService, ProductDocumentService, HttpService],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

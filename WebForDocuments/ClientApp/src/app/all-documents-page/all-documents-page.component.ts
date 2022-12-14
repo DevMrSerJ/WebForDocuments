@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { DocumentModel,  DocumentService } from '../document.service';
+import { DocumentModel } from '../document.service';
 import { HttpService } from '../http.service';
 
 @Component({
@@ -29,10 +29,7 @@ export class AllDocumentsPageComponent {
 
   autoNavigateToFocusedRow = true;
 
-  //private httpService: any;
-
-  constructor(private router: Router, service: DocumentService, private httpService: HttpService) {
-    //this.documents = service.getDocuments();
+  constructor(private router: Router, private httpService: HttpService) {
     this.getDocuments();
     this.showFilterRow = true;
     this.showHeaderFilter = true;
@@ -93,11 +90,8 @@ export class AllDocumentsPageComponent {
   }
 
   onCellDblClick(e: any) {
-    console.log(e);
-    this.router.navigateByUrl('/document', {
-      state: {
-        id: e.row.data.id_record
-      }
-    });
+    localStorage.setItem('documentId', JSON.stringify(e.row.data.id_record));
+
+    this.router.navigateByUrl('/document');
   }
 }

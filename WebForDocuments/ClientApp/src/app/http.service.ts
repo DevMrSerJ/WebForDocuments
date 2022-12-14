@@ -10,4 +10,8 @@ export class HttpService {
   public getDocuments() {
     return this.http.get("https://localhost:44363/api/document");
   }
+
+  public getProducts(id: string) {
+    return this.http.get("https://localhost:44363/api/document/" + id);
+  }
 }
